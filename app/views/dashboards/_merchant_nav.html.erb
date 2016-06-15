@@ -2,13 +2,13 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <%= link_to "Merchant Dashboard", dashboards_index_path %>
+                    <%= link_to "Merchant Dashboard", root_path %>
                 </li>
                 <li>
-                	<%= link_to "Dashboard", dashboards_index_path %>
+                	<%= link_to "Dashboard", root_path %>
                 </li>
                 <li>
-                    <%= link_to "Manage Categories", '#' %>
+                    <%= link_to "Manage Categories", categories_path %>
                 </li>
                 <li>
                     <%= link_to "Manage Products", '#' %>
@@ -23,7 +23,7 @@
                     <%= link_to "Store Settings", '#' %>
                 </li>
                 <li><%= link_to('Logout', destroy_merchant_session_path, :method => :delete) %></li>        
-                <h6 style="color: white; margin-top: 120px;">Grassy Platform - V1.0</h6>
+                <h6 style="color: white; margin-top: 120px;">Dining Platform - V1.0</h6>
                 <h6 style="color: white;">System Status: <span class="label label-success">OK</span></h6>
             </ul>
 
