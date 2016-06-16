@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_merchant!
+  before_action :authenticate_merchant!, except: [:show]
   #before_action :owned_category, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
@@ -12,8 +12,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @locations = Location.all
     # This is not allowing other merchants to see owners category by simply switching the :id in the URL
-    @category = current_merchant.categories.find(params[:id]) rescue redirect_to(root_path)
+    #@category = current_merchant.categories.find(params[:id]) rescue redirect_to(root_path)
   end
 
   # GET /categories/new
@@ -31,6 +32,8 @@ class CategoriesController < ApplicationController
     #else
     #  redirect_to root_path, error: "You don't have permission."
     #end
+    # This is not allowing other merchants to see owners category by simply switching the :id in the URL
+    @category = current_merchant.categories.find(params[:id]) rescue redirect_to(root_path)
   end
 
   # POST /categories

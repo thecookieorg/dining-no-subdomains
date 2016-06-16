@@ -1,6 +1,11 @@
 class LocationsController < ApplicationController
   before_action :authenticate_merchant!, except: [:show]
+  # location_exists is defined in application_controller.rb
+  # it checks if a current_merchant already has a location created in the database
+  # and disable creation of a new one.
+  before_action :location_exists, only: [:new, :create]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+
 
   # GET /locations
   # GET /locations.json
@@ -37,17 +42,19 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = current_merchant.locations.build(location_params)
 
-    respond_to do |format|
-      if @location.save
-        format.html { redirect_to locations_path, notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
-      else
-        format.html { render :new }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+    
+      @location = current_merchant.locations.build(location_params)
+      respond_to do |format|
+        if @location.save
+          format.html { redirect_to locations_path, notice: 'Location was successfully created.' }
+          format.json { render :show, status: :created, location: @location }
+        else
+          format.html { render :new }
+          format.json { render json: @location.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    
   end
 
   # PATCH/PUT /locations/1
