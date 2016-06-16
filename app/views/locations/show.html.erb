@@ -9,20 +9,53 @@
   </div><!-- end row -->
 
   <div class="row" style="margin-top: 30px;">
-    <% @location.categories.each do |c| %>
-      <% c.products.each do |p| %>
-        <div class="col-md-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title"><%= p.name %></h3>
+    <div class="col-md-6">
+      <% @location.categories.each do |c| %>
+        <h1><%= c.name %></h1>
+        <ul>
+        <% c.products.each do |p| %>
+          <li>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= p.name %></h3>
+              </div>
+              <div class="panel-body">
+                <p><%= p.description %></p>
+                <p>Price: <%= number_to_currency(p.price) %></p>
+              </div>
             </div>
-            <div class="panel-body">
-              <p><%= p.description %></p>
-              <p>Price: <%= number_to_currency(p.price) %></p>
-            </div>
-          </div>
-        </div><!-- end col-md-3 -->
+          </li>
+        <% end %>
+      </ul>
       <% end %>
-    <% end %>
+    </div><!-- end col-md-8 -->
+    <div class="col-md-4" style="margin-top: 73px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Working Hours</h3>
+        </div>
+        <div class="panel-body">
+          <p>Hours</p>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Map</h3>
+        </div>
+        <div class="panel-body">
+          <p>Embeded Map</p>
+        </div>
+      </div>
+    </div><!-- end col-md-3 -->
+    <div class="col-md-2" style="margin-top: 73px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Cart</h3>
+        </div>
+        <div class="panel-body">
+          <p>Hours</p>
+        </div>
+      </div>
+    </div><!-- end col-md-3 -->
   </div><!-- end row -->
 </div><!-- end container -->
