@@ -12,6 +12,16 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     #@location = current_merchant.locations.find(params[:id]) rescue redirect_to(root_path)
+    
+    # below code works only when current_merchant is logged in
+    #@products = current_merchant.products
+    #@categories = current_merchant.categories
+
+    # this kinda works?
+    @categories = @location.categories
+
+    # this gives some stupid output that isn't true
+    #@products = @categories.product
   end
 
   # GET /locations/new
@@ -45,7 +55,7 @@ class LocationsController < ApplicationController
   def update
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to locations_path, notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }
