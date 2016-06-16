@@ -1,14 +1,30 @@
 <%= simple_form_for(@location) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :about %>
-    <%= f.input :phone %>
-    <%= f.input :email %>
-    <%= f.input :takeout %>
-    <%= f.input :delivery %>
-    <%= f.input :address %>
+  <div class="form-group">
+    <%= f.input :name, autofocus: true, class: "form-control" %>
+    <%= f.input :about, class: "form-control" %>
+    <%= f.input :phone, class: "form-control" %>
+    <%= f.input :email, class: "form-control" %>
+    <%= f.input :takeout, class: "form-control" %>
+    <%= f.input :delivery, class: "form-control" %>
+    <%= f.input :address, class: "form-control" %>
+
+    <%# f.select :category_id, current_merchant.categories, :id, :name, {:multiple => true, class: "form-control", id: "select"}  %>
+
+    <%# f.input :category_id, as: :select, collection: current_merchant.categories %>
+
+    <%# f.collection_select :categories_id, current_merchant.categories, 
+                        :id, :name, { include_blank: true },
+                         { multiple: true } %>
+
+    
+      <%= f.collection_check_boxes :category_ids, current_merchant.categories, 
+                        :id, :name,
+                         { multiple: true } %>
+    
+    
+
   </div>
 
   <div class="form-actions">
