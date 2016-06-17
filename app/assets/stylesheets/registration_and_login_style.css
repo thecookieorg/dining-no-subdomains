@@ -1,0 +1,8 @@
+.registration-bg {
+  padding-top: 4em;
+  background-image: <%= image_path('registration-page.jpg') %>;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}

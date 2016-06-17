@@ -25,7 +25,7 @@ class LocationsController < ApplicationController
     # this kinda works?
     @categories = @location.categories
 
-    @locations = current_merchant.locations.find(params[:id])
+    @locations = Location.find(params[:id])
     @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
