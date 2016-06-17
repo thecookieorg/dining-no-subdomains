@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sizes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Portion size</th>
+      <th>Size based price</th>
+      <th>Size description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sizes.each do |size| %>
+      <tr>
+        <td><%= size.portion_size %></td>
+        <td><%= size.size_based_price %></td>
+        <td><%= size.size_description %></td>
+        
+        <td><%= link_to 'Show', size %></td>
+        <td><%= link_to 'Edit', edit_size_path(size) %></td>
+        <td><%= link_to 'Destroy', size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Size', new_size_path %>

@@ -27,6 +27,10 @@
               <div class="panel-body">
                 <p><%= p.description %></p>
                 <p>Price: <%= number_to_currency(p.price) %></p>
+                <% p.sizes.each do |s| %>
+                  <p><%= s.size_description %></p>
+                  <p><%= number_to_currency(s.size_based_price) %></p>
+                <% end %>
               </div>
             </div>
           </li>

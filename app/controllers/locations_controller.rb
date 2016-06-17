@@ -4,6 +4,9 @@ class LocationsController < ApplicationController
   # it checks if a current_merchant already has a location created in the database
   # and disable creation of a new one.
   before_action :location_exists, only: [:new, :create]
+  # this is set in application_controller.rb
+  # it checks ownership of the location before allowing it to do editing
+  before_action :check_ownership_before_editing_location, only: [:edit, :update]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
 
@@ -24,6 +27,7 @@ class LocationsController < ApplicationController
 
     # this kinda works?
     @categories = @location.categories
+    @sizes = Size.all
 
     @locations = Location.find(params[:id])
     @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
@@ -47,7 +51,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @location = current_merchant.locations.find(params[:id]) rescue redirect_to(root_path)
+    #@location = current_merchant.locations.find(params[:id]) rescue redirect_to(root_path)
   end
 
   # POST /locations

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616235232) do
+ActiveRecord::Schema.define(version: 20160617202448) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -76,5 +76,18 @@ ActiveRecord::Schema.define(version: 20160616235232) do
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
   add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"
+
+  create_table "sizes", force: :cascade do |t|
+    t.string   "portion_size"
+    t.decimal  "size_based_price", precision: 8, scale: 2
+    t.string   "size_description"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "product_id"
+    t.integer  "merchant_id"
+  end
+
+  add_index "sizes", ["merchant_id"], name: "index_sizes_on_merchant_id"
+  add_index "sizes", ["product_id"], name: "index_sizes_on_product_id"
 
 end

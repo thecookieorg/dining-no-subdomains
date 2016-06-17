@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Portion size:</strong>
+  <%= @size.portion_size %>
+</p>
+
+<p>
+  <strong>Size based price:</strong>
+  <%= @size.size_based_price %>
+</p>
+
+<p>
+  <strong>Size description:</strong>
+  <%= @size.size_description %>
+</p>
+
+<%= link_to 'Edit', edit_size_path(@size) %> |
+<%= link_to 'Back', sizes_path %>

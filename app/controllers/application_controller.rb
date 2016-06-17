@@ -7,11 +7,17 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-  # This method is to check if a location has been created already by the merchant.
-  # If a location is present in the db -> don't allow creation of another one.
-  # A before_action filter is set in locations_controller.rb
-  def location_exists
-  	redirect_to('/') if current_merchant.locations.present?
-  end
+
+  private
+	  # This method is to check if a location has been created already by the merchant.
+	  # If a location is present in the db -> don't allow creation of another one.
+	  # A before_action filter is set in locations_controller.rb
+	  def location_exists
+	  	redirect_to('/') if current_merchant.locations.present?
+	  end
+
+	  def check_ownership_before_editing_location
+	  	@location = current_merchant.locations.find(params[:id]) rescue redirect_to(root_path)
+	  end
 
 end

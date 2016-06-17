@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  portion_size: MyString
+  size_based_price: 9.99
+  size_description: MyString
+
+two:
+  portion_size: MyString
+  size_based_price: 9.99
+  size_description: MyString

@@ -1,0 +1,13 @@
+<%= simple_form_for(@size) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :portion_size %>
+    <%= f.input :size_based_price %>
+    <%= f.input :size_description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

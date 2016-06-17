@@ -11,13 +11,28 @@
     </div>
   <% end %>
 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="form-group">
+      <%= f.input :name, autofocus: true, class: "form-control" %>
+      <%= f.input :description, class: "form-control" %>
+      <%= f.input :price, class: "form-control" %>
+      <%= f.input :notes, class: "form-control" %>
+      <%= f.label "Choose a category:" %><br>
+      <%= f.collection_select :category_id, current_merchant.categories, :id, :name, class: "form-control", id: "select" %>
+    </div>
+  </div>
+</div>
+
+  
   <div class="form-group">
-    <%= f.input :name, autofocus: true, class: "form-control" %>
-    <%= f.input :description, class: "form-control" %>
-    <%= f.input :price, class: "form-control" %>
-    <%= f.input :notes, class: "form-control" %>
-    <%= f.label "Choose a category:" %><br>
-    <%= f.collection_select :category_id, current_merchant.categories, :id, :name, class: "form-control", id: "select" %>
+    <%= f.fields_for :sizes do |sizes_form_for| %>
+      <%= render 'size_fields', f: sizes_form_for %>
+    <% end %>
+    <div class="form-actions">
+      <%= link_to_add_sizes "Add Size", f, :sizes %>
+    </div>
+    <br>
   </div>
   <div class="form-actions">
     <%= f.submit class: "btn btn-success" %>

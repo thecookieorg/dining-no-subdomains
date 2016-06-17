@@ -16,10 +16,14 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = current_merchant.products.build
+    @product.sizes.build
+    #@product.sizes.build
   end
 
   # GET /products/1/edit
   def edit
+    @product = current_merchant.products.find(params[:id]) rescue redirect_to(root_path)
+    #@product = Product.find(params[:id])
   end
 
   # POST /products
@@ -41,6 +45,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
@@ -55,6 +60,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -70,6 +76,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :notes, :category_id)
+      params.require(:product).permit(:name, :description, :price, :notes, :category_id, :_destroy, sizes_attributes: [:id, :portion_size, :size_based_price, :size_description, :_destroy])
     end
 end
