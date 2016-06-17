@@ -25,6 +25,17 @@ class LocationsController < ApplicationController
     # this kinda works?
     @categories = @location.categories
 
+    @locations = current_merchant.locations.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.infowindow "<h4>#{location.name}</h4><p><b>Address:</b> #{location.address}</p><p><b>Phone:</b> #{location.phone}</p>"
+      marker.json({
+        name:     location.name,
+        address: location.address
+      })
+    end
+
     # this gives some stupid output that isn't true
     #@products = @categories.product
   end
