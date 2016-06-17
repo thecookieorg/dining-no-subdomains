@@ -18,8 +18,10 @@
       <%= f.input :description, class: "form-control" %>
       <%= f.input :price, class: "form-control" %>
       <%= f.input :notes, class: "form-control" %>
-      <%= f.label "Choose a category:" %><br>
-      <%= f.collection_select :category_id, current_merchant.categories, :id, :name, class: "form-control", id: "select" %>
+      <%= f.label "Select Menu Category:" %><br>
+      <%= f.collection_select :category_id, current_merchant.categories, :id, :name, class: "form-control", id: "select" %><br><br>
+      <%= f.label "Select Tax:" %><br>
+      <%= f.collection_select :product_tax_id, current_merchant.product_taxes, :id, :name, class: "form-control", id: "select" %>
     </div>
   </div>
 </div>
