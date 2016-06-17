@@ -1,34 +1,27 @@
 <fieldset>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Add Size <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Help</button></h3>
-	</div>
-	<div class="panel-body">
-    		<div class="row">
-    			<div class="col-md-4">
-    				<%= f.input :portion_size, collection: ['XXS','XS', 'S', 'M', 'L', 'XL', 'XXL'], prompt: 'Select Size' %>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="input-group">
-					  <span class="input-group-addon">$</span>
-					  <%= f.input :size_based_price %>
-					</div>
-    				
-    			</div>
-    			<div class="col-md-4">
-    				<%= f.input :size_description %>
-    			</div>
-    			
-    		</div>
-	</div>
-	<div class="panel-footer">
-  		<%= f.hidden_field :_destroy %>
-		<%= link_to "remove size", '#', class: "remove_fields btn btn-danger" %>
-	</div>
-</div>
-			
-
-  </fieldset>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Add Size <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Help</button></h3>
+		</div>
+		<div class="panel-body">
+	    		<div class="row">
+	    			<div class="col-md-4">
+	    				<%= f.input :portion_size, collection: ['XXS','XS', 'S', 'M', 'L', 'XL', 'XXL'], prompt: 'Select Size' %>
+	    			</div>
+	    			<div class="col-md-4">
+						<%= f.input :size_based_price %>
+	    			</div>
+	    			<div class="col-md-4">
+	    				<%= f.input :size_description %>
+	    			</div>
+	    		</div><!-- end row -->
+		</div><!-- end panel body -->
+		<div class="panel-footer">
+	  		<%= f.hidden_field :_destroy %>
+			<%= link_to "remove size", '#', class: "remove_fields btn btn-danger" %>
+		</div><!-- end panel footer -->
+	</div><!-- end panel panel-default -->
+</fieldset>
 
 
   <!-- Modal -->

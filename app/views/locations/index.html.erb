@@ -9,21 +9,21 @@
                       <a href="#menu-toggle" class="btn btn-info btn-xs" id="menu-toggle">Toggle Menu</a>
                         
                         <div class="row" style="margin-top: 30px;">
-                            <h1>Listing Locations</h1>
+                            <h1>My Location</h1>
+                            
                             
                                 <%= link_to 'New Location', new_location_path, class: "btn btn-success" %>
                             
-                            <table class="table">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                              Quick Info
+                            </button>
+
+                            <table class="table" style="margin-top: 30px;">
                               <thead>
                                 <tr>
                                   <th>Name</th>
-                                  <th>About</th>
                                   <th>Phone</th>
                                   <th>Email</th>
-                                  <th>Takeout</th>
-                                  <th>Delivery</th>
-                                  <th>Address</th>
-                                  <th>MID</th>
                                   <th colspan="3"></th>
                                 </tr>
                               </thead>
@@ -32,16 +32,13 @@
                                 <% @locations.each do |location| %>
                                   <tr>
                                     <td><%= location.name %></td>
-                                    <td><%= location.about %></td>
                                     <td><%= location.phone %></td>
                                     <td><%= location.email %></td>
-                                    <td><%= location.takeout %></td>
-                                    <td><%= location.delivery %></td>
-                                    <td><%= location.address %></td>
-                                    <td><%= location.merchant_id %></td>
-                                    <td><%= location.category_ids %></td>
-                                    
-                                    <td><%= link_to 'Show', location %></td>
+                                    <td>
+                                      <%= link_to location, target: "_blank" do %>
+                                        <i class="fa fa-external-link btn btn-info" aria-hidden="true"></i>
+                                      <% end %>
+                                    </td>
                                     <td>
                                       <%= link_to edit_location_path(location) do %>
                                         <i class="fa fa-pencil-square-o btn btn-warning" aria-hidden="true"></i>
@@ -69,3 +66,72 @@
 
 
 <%= render 'dashboards/toggle_sidebar_script' %>
+
+
+
+<% @locations.each do |location| %>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Details for <%= location.name %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>About:</h5>
+              <p><%= location.about %></p>
+            </div>
+          </div><!-- end row -->
+          <hr>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Phone:</h5>
+              <p><%= location.phone %></p>
+            </div>
+            <div class="col-md-6">
+              <h5>Email:</h5>
+              <p><%= location.email %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <h5>Address:</h5>
+              <p><%= location.address %></p>
+            </div>
+            <div class="col-md-8">
+              <p>Map will go here</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Takeout:</h5>
+              <% if location.takeout %>
+                <p style="color: green;">Yes</p>
+              <% else %>
+                <p style="color: red;">No</p>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <h5>Delivery:</h5>
+                <% if location.delivery %>
+                  <p style="color: green;">Yes</p>
+                <% else %>
+                  <p style="color: red;">No</p>
+                <% end %>
+            </div>
+          </div><!-- end row -->
+        </div><!-- end modal body -->
+          
+     
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
