@@ -9,15 +9,17 @@
                       <a href="#menu-toggle" class="btn btn-info btn-xs" id="menu-toggle">Toggle Menu</a>
                         
                         <div class="row" style="margin-top: 30px;">
-                            <h1>My Location</h1>
-                            
-                            
-                                <%= link_to 'New Location', new_location_path, class: "btn btn-success" %>
-                            
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                              Quick Info
-                            </button>
+                            <h1>My Location 
+                              <%= link_to new_location_path, class: "btn btn-success btn-sm" do %>
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add Location
+                              <% end %>
 
+                              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                              <i class="fa fa-info" aria-hidden="true"></i> Quick Info
+                            </button>
+                            </h1>
+                            <hr>
+                            
                             <table class="table" style="margin-top: 30px;">
                               <thead>
                                 <tr>

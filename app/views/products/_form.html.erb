@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="form-group">
-      <%= f.input :name, autofocus: true, class: "form-control" %>
-      <%= f.input :description, class: "form-control" %>
-      <%= f.input :price, class: "form-control" %>
-      <%= f.input :notes, class: "form-control" %>
-      <%= f.label "Select Menu Category:" %><br>
-      <%= f.collection_select :category_id, current_merchant.categories, :id, :name, class: "form-control", id: "select" %><br><br>
-      <%= f.label "Select Tax:" %><br>
-      <%= f.collection_select :product_tax_id, current_merchant.product_taxes, :id, :name, class: "form-control", id: "select" %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        <%= f.input :name, autofocus: true, class: "form-control", placeholder: "Menu Item Name" %>
+        <%= f.input :description, class: "form-control", placeholder: "Menu Item Description" %>
+        <%= f.input :price, class: "form-control" %>
+        <%= f.input :notes, class: "form-control", placeholder: "Add things like alergies info, calories, ingredients, etc." %>
+        <%= f.label "Select Menu Category:" %><br>
+        <%= f.collection_select :category_id, current_merchant.categories, :id, :name, class: "form-control", id: "select" %><br><br>
+        <%= f.label "Select Tax:" %><br>
+        <%= f.collection_select :product_tax_id, current_merchant.product_taxes, :id, :name, class: "form-control", id: "select" %>
+      </div>
     </div>
   </div>
-</div>
-
-  
+  <hr>
+    
   <div class="form-group">
     <%= f.fields_for :sizes do |sizes_form_for| %>
       <%= render 'size_fields', f: sizes_form_for %>
@@ -34,6 +34,7 @@
     <div class="form-actions">
       <%= link_to_add_sizes "Add Size", f, :sizes %>
     </div>
+    <hr>
     <br>
   </div>
   <div class="form-actions">

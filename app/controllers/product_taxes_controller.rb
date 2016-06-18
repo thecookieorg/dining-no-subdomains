@@ -1,4 +1,5 @@
 class ProductTaxesController < ApplicationController
+  before_action :authenticate_merchant!
   before_action :set_product_tax, only: [:show, :edit, :update, :destroy]
 
   # GET /product_taxes
@@ -19,6 +20,7 @@ class ProductTaxesController < ApplicationController
 
   # GET /product_taxes/1/edit
   def edit
+    @product_tax = current_merchant.product_taxes.find(params[:id]) rescue redirect_to(root_path)
   end
 
   # POST /product_taxes

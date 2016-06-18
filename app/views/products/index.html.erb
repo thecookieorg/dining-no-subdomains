@@ -9,9 +9,12 @@
                       <a href="#menu-toggle" class="btn btn-info btn-xs" id="menu-toggle">Toggle Menu</a>
                         
                         <div class="row" style="margin-top: 30px;">
-                          <h1>Manage Products</h1>
-                          <%= link_to 'New Product', new_product_path, class: "btn btn-success" %>
-                              
+                          <h1>Manage Products 
+                            <%= link_to new_product_path, class: "btn btn-success btn-sm" do %>
+                              <i class="fa fa-plus" aria-hidden="true"></i> Add New Product
+                            <% end %>
+                          </h1>
+                          <hr>
                               <table class="table" style="margin-top: 30px;">
                                 <thead>
                                   <tr>

@@ -9,15 +9,10 @@
                       <a href="#menu-toggle" class="btn btn-info btn-xs" id="menu-toggle">Toggle Menu</a>
                         
                         <div class="row" style="margin-top: 30px;">
-                          	<h1>New Product</h1>
-
-							<%= render 'form' %>
-
-							<%= link_to 'Cancel', products_path %>
-
-                      
+                          <h1>New Product</h1>
+                          <%= render 'form' %>
+                          <%= link_to 'Cancel', products_path, class: "btn btn-link" %>
                         </div><!-- /.row -->
-                  
                     </div>
                 </div><!-- /.row -->
             </div>
@@ -27,6 +22,3 @@
 
 
 <%= render 'dashboards/toggle_sidebar_script' %>
-
-
-

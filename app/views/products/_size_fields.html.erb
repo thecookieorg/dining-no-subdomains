@@ -9,10 +9,10 @@
 	    				<%= f.input :portion_size, collection: ['XXS','XS', 'S', 'M', 'L', 'XL', 'XXL'], prompt: 'Select Size' %>
 	    			</div>
 	    			<div class="col-md-4">
-						<%= f.input :size_based_price %>
+						<%= f.input :size_based_price, placeholder: "Add only numbers! Ex: 10" %>
 	    			</div>
 	    			<div class="col-md-4">
-	    				<%= f.input :size_description %>
+	    				<%= f.input :size_description, placeholder: "Ex: 12 Inch Pizza" %>
 	    			</div>
 	    		</div><!-- end row -->
 		</div><!-- end panel body -->
