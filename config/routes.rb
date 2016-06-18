@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'publishings/index'
+
   resources :product_taxes
   resources :sizes
   resources :locations
