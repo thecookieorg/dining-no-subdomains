@@ -17,7 +17,6 @@ class ProductsController < ApplicationController
   def new
     @product = current_merchant.products.build
     @product.sizes.build
-    #@product.sizes.build
   end
 
   # GET /products/1/edit
