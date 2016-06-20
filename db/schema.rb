@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620025548) do
+ActiveRecord::Schema.define(version: 20160620032456) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 20160620025548) do
   add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
 
+  create_table "option_groups", force: :cascade do |t|
+    t.string   "group_name"
+    t.boolean  "is_required", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "product_taxes", force: :cascade do |t|
     t.string   "name"
     t.decimal  "value",       precision: 8, scale: 2
@@ -77,7 +84,6 @@ ActiveRecord::Schema.define(version: 20160620025548) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price"
     t.text     "notes"
     t.integer  "category_id"
     t.datetime "created_at",     null: false

@@ -1,7 +1,7 @@
 <fieldset>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Add Size <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i> Help</button></h3>
+			<h3 class="panel-title">Add New Size</h3>
 		</div>
 		<div class="panel-body">
 	    		<div class="row">
@@ -15,42 +15,19 @@
 	    				<%= f.input :size_description, placeholder: "Ex: 12 Inch Pizza" %>
 	    			</div>
 	    		</div><!-- end row -->
+	    	<div class="row">
+	    		<div class="col-md-12">
+	    			<label><input type="checkbox" id="cbshow"> Additional Menu Options</label>
+	    		</div><!-- end col-md-12 -->
+	    		<div class="col-md-12" id="divshow" style="display:none">
+	    			Add modifiers heer
+	    		</div>
+ 
+	    	</div><!-- end row -->
 		</div><!-- end panel body -->
 		<div class="panel-footer">
 	  		<%= f.hidden_field :_destroy %>
-			<%= link_to "remove size", '#', class: "remove_fields btn btn-danger" %>
+			<%= link_to "remove size", '#', class: "remove_fields btn btn-danger btn-xs" %>
 		</div><!-- end panel footer -->
 	</div><!-- end panel panel-default -->
 </fieldset>
-
-
-  <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Adding Sizes</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-        	<div class="col-md-4">
-        		<h5>Portion Size</h5>
-        		<p>Portion size is for your eyes only, this will not be visible to your customer. We use portion size to calculate size based price in the checkout process</p>
-        	</div><!-- end col-md-4 -->
-        	<div class="col-md-4">
-        		<h5>Size Based Price</h5>
-        		<p>Size based price is a price for specific size you have defined for your dish. Price will change for different sizes.</p>
-        	</div><!-- end col-md-4 -->
-        	<div class="col-md-4">
-        		<h5>Size Description</h5>
-        		<p>Here you can define what your customer will see on your ordering page. For example, you can set "Medium Size", "Family Size", "14 inch Pizza", etc.</p>
-        	</div><!-- end col-md-4 -->
-        </div><!-- end row -->
-      </div><!-- end modal-body -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

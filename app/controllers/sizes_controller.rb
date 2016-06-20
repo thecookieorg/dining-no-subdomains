@@ -15,6 +15,7 @@ class SizesController < ApplicationController
   # GET /sizes/new
   def new
     @size = current_merchant.sizes.build
+    @size.option_groups.build
   end
 
   # GET /sizes/1/edit
@@ -69,6 +70,6 @@ class SizesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def size_params
-      params.require(:size).permit(:portion_size, :size_based_price, :size_description, :product_id, :merchant_id, :_destroy)
+      params.require(:size).permit(:portion_size, :size_based_price, :size_description, :product_id, :merchant_id, :_destroy, option_groups_attributes: [:id, :group_name, :is_required, :_destroy]))
     end
 end
