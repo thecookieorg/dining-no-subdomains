@@ -7,7 +7,15 @@
         <h4 class="modal-title" id="myModalLabel">Working hours</h4>
       </div>
       <div class="modal-body">
-        ...
+        <% @location_hours.each do |location_hour| %>
+          <%= location_hour.name %>
+          <% location_hour.hours.each do |hour| %>
+            <p><%= hour.day %></p>
+            <p><%= hour.start_time %></p>
+            <p><%= hour.end_time %></p>
+            <p><%= hour.closed %></p>
+          <% end %>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
