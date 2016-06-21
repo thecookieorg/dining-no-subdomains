@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
 		end
 	  end
 
+	  def location_hours_exists
+	  	redirect_to('/') if current_merchant.location_hours.present?
+	  end
+
 end

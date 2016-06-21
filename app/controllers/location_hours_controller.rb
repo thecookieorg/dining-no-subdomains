@@ -1,5 +1,6 @@
 class LocationHoursController < ApplicationController
   before_action :authenticate_merchant!
+  before_action :location_hours_exists, only: [:new, :create]
   before_action :set_location_hour, only: [:show, :edit, :update, :destroy]
 
   # GET /location_hours

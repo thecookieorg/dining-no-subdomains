@@ -8,12 +8,27 @@
       </div>
       <div class="modal-body">
         <% @location_hours.each do |location_hour| %>
+        <% rest_time_zone = @location.time_zone %>
+        <%= rest_time_zone %>
           <%= location_hour.name %>
           <% location_hour.hours.each do |hour| %>
             <p><%= hour.day %></p>
-            <p><%= hour.start_time %></p>
+            <p><%= hour.start_time.in_time_zone(rest_time_zone) %></p>
             <p><%= hour.end_time %></p>
             <p><%= hour.closed %></p>
+
+            <% order_lead_time = 10800 %>
+            <%= hour.start_time + order_lead_time %><br><br>
+            <%= Time.now.in_time_zone(rest_time_zone) + order_lead_time %>
+
+            <br>
+            <br>
+            <% current_users_time = Time.now.in_time_zone(rest_time_zone) + order_lead_time %>
+            <% hours_start = hour.start_time.in_time_zone(rest_time_zone) %>
+            <% hours_end = hour.end_time.in_time_zone(rest_time_zone) %>
+            <% if current_users_time < hours_end %>
+              <h1>Currently Open for Business</h1>
+            <% end %>
           <% end %>
         <% end %>
       </div>
