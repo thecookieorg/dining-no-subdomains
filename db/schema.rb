@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621033852) do
+ActiveRecord::Schema.define(version: 20160621205718) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160621033852) do
     t.string   "time_zone"
     t.integer  "hour_id"
     t.integer  "location_hour_id"
+    t.string   "order_lead_time"
   end
 
   add_index "locations", ["hour_id"], name: "index_locations_on_hour_id"

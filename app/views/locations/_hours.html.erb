@@ -17,7 +17,8 @@
             <p><%= hour.end_time %></p>
             <p><%= hour.closed %></p>
 
-            <% order_lead_time = 10800 %>
+            <% order_lead_time = @location.order_lead_time.to_i %>
+            <h1><%= order_lead_time %></h1>
             <%= hour.start_time + order_lead_time %><br><br>
             <%= Time.now.in_time_zone(rest_time_zone) + order_lead_time %>
 
@@ -29,6 +30,23 @@
             <% if current_users_time < hours_end %>
               <h1>Currently Open for Business</h1>
             <% end %>
+            <br><br>
+            <% today_is = Time.now.wday %>
+            <% if today_is == hour.day %>
+              <h1>MARKO</h1>
+            <% end %>
+            <br><br>
+            <% case hour.day %>
+            <% when 0 %>
+              <p>Sunday</p>
+            <% when 1 %>
+              <p>Monday</p>
+            <% when 2 %>
+              <p>Tuesday</p>
+            <% end %>
+
+            
+
           <% end %>
         <% end %>
       </div>

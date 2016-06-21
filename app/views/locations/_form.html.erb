@@ -30,14 +30,18 @@
           <h5>What type of orders do you accept?</h5>
           <%= f.input :takeout, class: "form-control" %>
           <%= f.input :delivery, class: "form-control" %>
-        </div><!-- end col-md-4 -->
-        <div class="col-md-8">
+        </div><!-- end col-md-3 -->
+        <div class="col-md-5">
           <h5>Choose Menu Categories:</h5>
           <%= f.collection_check_boxes :category_ids, current_merchant.categories, 
                         :id, :name,
                          { multiple: true } %>
 
-        </div><!-- end col-md-8 -->
+        </div><!-- end col-md-6 -->
+        <div class="col-md-3">
+          <%= f.input :order_lead_time, class: "form-control", placeholder: "Enter in SECONDS!" %>
+          <small>1 hour = 3600 seconds</small>
+        </div>
     </div><!-- end row -->
     <hr>
     <div class="row">
