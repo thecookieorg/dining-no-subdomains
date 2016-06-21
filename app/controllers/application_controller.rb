@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # setting the time zone
+  around_action :set_time_zone#, if: :current_merchant
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
@@ -18,6 +21,13 @@ class ApplicationController < ActionController::Base
 
 	  def check_ownership_before_editing_location
 	  	@location = current_merchant.locations.find(params[:id]) rescue redirect_to(root_path)
+	  end
+
+	  def set_time_zone(&block)
+	  	locations = current_merchant.locations
+	  	locations.each do |l|
+			Time.use_zone(l.time_zone, &block)
+		end
 	  end
 
 end

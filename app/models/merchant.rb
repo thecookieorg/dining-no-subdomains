@@ -9,4 +9,6 @@ class Merchant < ActiveRecord::Base
   has_many :locations, dependent: :destroy
   has_many :sizes, dependent: :destroy
   has_many :product_taxes, dependent: :destroy
+  has_many :location_hours, dependent: :destroy
+  has_many :hours, dependent: :destroy
 end

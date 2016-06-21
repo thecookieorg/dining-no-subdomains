@@ -1,0 +1,15 @@
+<%= simple_form_for(@hour) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.label :day %><br />
+    <%= f.select :day, Date::DAYNAMES.zip((0..6).to_a) %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.input :closed %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

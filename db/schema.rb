@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620032456) do
+ActiveRecord::Schema.define(version: 20160621033852) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,29 @@ ActiveRecord::Schema.define(version: 20160620032456) do
   end
 
   add_index "categories", ["merchant_id"], name: "index_categories_on_merchant_id"
+
+  create_table "hours", force: :cascade do |t|
+    t.integer  "day"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean  "closed"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "merchant_id"
+    t.integer  "location_hour_id"
+  end
+
+  add_index "hours", ["location_hour_id"], name: "index_hours_on_location_hour_id"
+  add_index "hours", ["merchant_id"], name: "index_hours_on_merchant_id"
+
+  create_table "location_hours", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "merchant_id"
+  end
+
+  add_index "location_hours", ["merchant_id"], name: "index_location_hours_on_merchant_id"
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -37,8 +60,13 @@ ActiveRecord::Schema.define(version: 20160620032456) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "printer_phone_number"
+    t.string   "time_zone"
+    t.integer  "hour_id"
+    t.integer  "location_hour_id"
   end
 
+  add_index "locations", ["hour_id"], name: "index_locations_on_hour_id"
+  add_index "locations", ["location_hour_id"], name: "index_locations_on_location_hour_id"
   add_index "locations", ["merchant_id"], name: "index_locations_on_merchant_id"
 
   create_table "locationscategories", id: false, force: :cascade do |t|

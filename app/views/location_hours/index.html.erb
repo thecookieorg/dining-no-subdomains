@@ -1,0 +1,91 @@
+<div id="wrapper">
+  <%= render 'dashboards/merchant_nav' %>
+
+  <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <a href="#menu-toggle" class="btn btn-info btn-xs" id="menu-toggle">Toggle Menu</a>
+                        
+                        <div class="row" style="margin-top: 30px;">
+                          <h1>Business Hours 
+                            <%= link_to new_location_hour_path, class: "btn btn-success btn-sm" do %>
+                              <i class="fa fa-plus" aria-hidden="true"></i> Add New Hour Group
+                            <% end %>
+                          </h1>
+                          
+                          <div class="col-md-12">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th colspan="3"></th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <% @location_hours.each do |location_hour| %>
+                                  <tr>
+                                    <td><%= location_hour.name %></td>
+                                    <td>
+                                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#<%= location_hour.id %>">
+                                          <i class="fa fa-info" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                      <%= link_to edit_location_hour_path(location_hour) do %>
+                                        <i class="fa fa-pencil-square-o btn btn-warning" aria-hidden="true"></i>
+                                      <% end %>
+                                    </td>
+                                    <td>
+                                      <%= link_to location_hour, method: :delete, data: { confirm: "Delete #{location_hour.name}?" } do %>
+                                        <i class="fa fa-trash btn btn-danger" aria-hidden="true"></i>
+                                      <% end %>
+                                    </td>
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                            </table>
+                          </div><!-- end col-md-12 -->  
+                      
+                        </div><!-- /.row -->
+                  
+                    </div>
+                </div><!-- /.row -->
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+</div><!-- end wrapper -->
+
+
+
+<!-- Button trigger modal -->
+
+<% @location_hours.each do |location_hour| %>
+<!-- Modal -->
+<div class="modal fade" id="<%= location_hour.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= location_hour.name %></h4>
+      </div>
+      <div class="modal-body">
+        Hours table goes here
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% end %>
+<!-- end products.each -->
+
+
+<%= render 'dashboards/toggle_sidebar_script' %>
+
+

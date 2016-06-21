@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   
 
+  resources :location_hours
+  resources :hours
   resources :product_taxes
   resources :sizes
   resources :locations
