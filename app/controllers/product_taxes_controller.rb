@@ -5,7 +5,7 @@ class ProductTaxesController < ApplicationController
   # GET /product_taxes
   # GET /product_taxes.json
   def index
-    @product_taxes = ProductTax.all
+    @product_taxes = current_merchant.product_taxes
   end
 
   # GET /product_taxes/1
