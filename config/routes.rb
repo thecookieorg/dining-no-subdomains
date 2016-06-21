@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'publishings/index'
+  
+
+  
 
   resources :product_taxes
   resources :sizes
@@ -7,7 +9,8 @@ Rails.application.routes.draw do
   resources :products
   resources :categories
   get 'dashboards/index'
-
+  get 'reports/index'
+  get 'publishings/index'
   get 'pages/index'
 
   devise_for :merchants

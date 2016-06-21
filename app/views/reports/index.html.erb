@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+<div id="wrapper">
+  <%= render 'dashboards/merchant_nav' %>
+
+  <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                      <a href="#menu-toggle" class="btn btn-info btn-xs" id="menu-toggle">Toggle Menu</a>
+                        
+                        <div class="row" style="margin-top: 30px;">
+                            <h1>Sales Reports</h1>
+                            <hr>
+                            <div class="col-md-12">
+                            	<div class="panel panel-default">
+								  <div class="panel-heading">
+								    <h3 class="panel-title">Annual Reports</h3>
+								  </div>
+								  <div class="panel-body">
+									<div id="myfirstchart" style="height: 250px;"></div>	    
+								  </div>
+								</div>
+                            </div><!-- end col-md-12 -->
+                        </row><!-- end row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                            	<div class="panel panel-default">
+								  <div class="panel-heading">
+								    <h3 class="panel-title">Takeout VS. Delivery</h3>
+								  </div>
+								  <div class="panel-body">
+									<div id="bar-example" style="height: 250px;"></div>	    
+								  </div>
+								</div>
+                            </div><!-- end col-md-12 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                            	<div class="panel panel-default">
+								  <div class="panel-heading">
+								    <h3 class="panel-title">Cash VS. Credit Card VS. Gift Cards</h3>
+								  </div>
+								  <div class="panel-body">
+									<div id="donut-example" style="height: 250px;"></div>	    
+								  </div>
+								</div>
+                            </div><!-- end col-md-6 -->
+                            <div class="col-md-6">
+                            	<div class="panel panel-default">
+								  <!-- Default panel contents -->
+								  <div class="panel-heading">Popular Products</div>
+								  <div class="panel-body">
+									  <!-- Table -->
+									  <table class="table">
+									    ...
+									  </table>
+								  </div>
+								</div>
+                            </div><!-- end col-md-6 -->
+                        </div><!-- /.row -->
+                       </div><!-- /.row -->
+                    </div><!-- end col-lg-12 -->
+                </div><!-- /.row -->
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+</div><!-- end wrapper -->
+
+
+<%= render 'dashboards/toggle_sidebar_script' %>
+
+
+<script>
+	new Morris.Line({
+	  // ID of the element in which to draw the chart.
+	  element: 'myfirstchart',
+	  // Chart data records -- each entry in this array corresponds to a point on
+	  // the chart.
+	  data: [
+	    { year: '2008', value: 20 },
+	    { year: '2009', value: 10 },
+	    { year: '2010', value: 5 },
+	    { year: '2011', value: 5 },
+	    { year: '2012', value: 20 }
+	  ],
+	  // The name of the data record attribute that contains x-values.
+	  xkey: 'year',
+	  // A list of names of data record attributes that contain y-values.
+	  ykeys: ['value'],
+	  // Labels for the ykeys -- will be displayed when you hover over the
+	  // chart.
+	  labels: ['Value']
+	});
+</script>
+
+<script>
+	new Morris.Bar({
+	  element: 'bar-example',
+	  data: [
+	    { y: '2006', a: 100, b: 90 },
+	    { y: '2007', a: 75,  b: 65 },
+	    { y: '2008', a: 50,  b: 40 },
+	    { y: '2009', a: 75,  b: 65 },
+	    { y: '2010', a: 50,  b: 40 },
+	    { y: '2011', a: 75,  b: 65 },
+	    { y: '2012', a: 100, b: 90 }
+	  ],
+	  xkey: 'y',
+	  ykeys: ['a', 'b'],
+	  labels: ['Takeout', 'Delivery']
+	});
+</script>
+
+<script>
+	new Morris.Donut({
+	  element: 'donut-example',
+	  data: [
+	    {label: "Credit Cards", value: 12},
+	    {label: "Cash", value: 30},
+	    {label: "Gift Cards", value: 20}
+	  ]
+	});
+</script>
