@@ -49,15 +49,18 @@
         <%= f.input :address, class: "form-control", placeholder: "Please enter full address! Ex: 301 Maude Road, Port Moody V3H5B1, BC" %>
       </div><!-- end col-md-6 -->
       <div class="col-md-6">
-        <%= f.input :time_zone, class: "form-control" %>
+        <%= f.input :time_zone, class: "form-control", placeholder: "Choose Your Time Zone" %>
       </div><!-- end col-md-6 -->
     </div><!-- end row -->
     <div class="row">
-      <div class="col-md-12">
-        <div class="field">
-          
-        </div>
-      </div><!-- end col-md-12 -->
+      <div class="col-md-5">
+          <%= f.input :location_hour_ids, label: "Choose Working Hours", :collection => current_merchant.location_hours %>
+
+          <%# f.input :location_hour_id, current_merchant.location_hours, 
+                        :id, :name,
+                         { multiple: true } %>
+
+        </div><!-- end col-md-6 -->
     </div>
   </div><!-- end form-group -->
 

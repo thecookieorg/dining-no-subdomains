@@ -1,6 +1,9 @@
 class LocationHour < ActiveRecord::Base
-	belongs_to :location
+	#belongs_to :location
 	belongs_to :merchant
+
+	has_many :locationslocationhour
+	has_many :locations, through: :locationslocationhour
 
 	has_many :hours, dependent: :destroy
 	accepts_nested_attributes_for :hours, allow_destroy: true

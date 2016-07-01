@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621205718) do
+ActiveRecord::Schema.define(version: 20160701174433) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +73,11 @@ ActiveRecord::Schema.define(version: 20160621205718) do
   create_table "locationscategories", id: false, force: :cascade do |t|
     t.integer "location_id", null: false
     t.integer "category_id", null: false
+  end
+
+  create_table "locationslocationhours", id: false, force: :cascade do |t|
+    t.integer "location_id",      null: false
+    t.integer "location_hour_id", null: false
   end
 
   create_table "merchants", force: :cascade do |t|

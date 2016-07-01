@@ -6,7 +6,7 @@
     <div class="panel-body">
        <div class="row">
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group hide-when-closed">
       	     <%= f.input :day, collection: Date::DAYNAMES.zip((0..6).to_a), prompt: "Select Day", class: "form-control" %>
             </div>
           </div><!-- end col-md-4 -->
@@ -14,12 +14,12 @@
             <div class="form-inline">
               <div class="row">
                 <div class="col-sm-6">
-                  <div class="form-group">
+                  <div class="form-group hide-when-closed">
                     <%= f.input :start_time, :as => :time, :ampm => true, class: "form-control" %>
                   </div>
                 </div><!-- end col-sm-6 -->
                 <div class="col-sm-6">
-                  <div class="form-group">
+                  <div class="form-group hide-when-closed">
                     <%= f.input :end_time, :as => :time, :ampm => true, class: "form-control" %>
                   </div>
                 </div><!-- end col-sm-6 -->
@@ -27,7 +27,7 @@
             </div><!-- end col-md-6 -->
           </div><!-- end col-md-4 -->
           <div class="col-md-2">
-            <%= f.input :closed %>
+            <%= f.input :closed, class: "closed_hours" %>
           </div><!-- end col-md-4 -->
       </div><!-- end row -->
     </div><!-- end panel-body -->

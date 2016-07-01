@@ -24,9 +24,10 @@ class ApplicationController < ActionController::Base
 	  end
 
 	  def set_time_zone(&block)
-	  	locations = current_merchant.locations
-	  	locations.each do |l|
-			Time.use_zone(l.time_zone, &block)
+	 	@locations = Location.all
+	 	#locations = current_merchant.locations
+	  	@locations.each do |l|
+			Time.use_zone(l.time_zone, &block) and return
 		end
 	  end
 

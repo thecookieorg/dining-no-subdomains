@@ -26,7 +26,13 @@ class LocationsController < ApplicationController
     #@categories = current_merchant.categories
 
     # this kinda works?
-    @location_hours = current_merchant.location_hours
+    #@location_hours = current_merchant.location_hours
+    #@location = Location.all
+    #@location_hours = LocationHour.all
+    #@location_hours = location.location_hours
+    #@location_hours = @location.location_hours
+    #@location_hours = LocationHour.all
+    @location_hours = @location.location_hours
     @hours = Hour.all
 
     @categories = @location.categories
@@ -107,6 +113,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :about, :phone, :printer_phone_number, :email, :takeout, :delivery, :address, :time_zone, :order_lead_time, :location_hours_id, :hours_id, :category_ids => [])
+      params.require(:location).permit(:name, :about, :phone, :printer_phone_number, :email, :takeout, :delivery, :address, :time_zone, :order_lead_time, :hours_id, :location_hour_ids, :category_ids => [], :location_hour_ids => [])
     end
 end
